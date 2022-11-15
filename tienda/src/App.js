@@ -1,8 +1,5 @@
 import './App.css';
-
-const Mensaje = () => {
-  return <h1>Hola Mundo</h1>
-}
+import Mensaje from './Mensaje'
 
 const Descripcion = () => {
   return <p>Se crearon componentes para react</p>
