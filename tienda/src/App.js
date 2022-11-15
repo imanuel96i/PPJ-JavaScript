@@ -9,7 +9,9 @@ const App = () => {
 
   return (
     <div className="App">
-      <Mensaje />
+      <Mensaje color='red' message='Estamos trabajando' />
+      <Mensaje color='green' message='En un curso' />
+      <Mensaje color='yellow' message='De React' />
       <Descripcion/>
     </div>
   );
