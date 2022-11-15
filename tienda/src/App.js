@@ -7,16 +7,8 @@ const Descripcion = () => {
 }
 
 const App = () => {
-  // ! Lo comentado abajo equivale a lo mismo que esta abajo
-  // ! Esto es un contador actualizable 
-  // ? const contador = useState(0)
-  // ? const contadorValor = contador[0];
-  // ? const contadorActualizado = contador[1];
+  // ! Aumenta el contador (renderiza el app de nuevo)
   const [contador, contadorActualizado] = useState(0)
-
-  setInterval(() => {
-    contadorActualizado(contador + 1)
-  },2000)
 
   return (
     <div className="App">
@@ -25,6 +17,12 @@ const App = () => {
       <Mensaje color='yellow' message='De React' />
       <Descripcion />
       <strong>Contador: {contador}</strong>
+      <br/>
+      <button onClick={() => {
+        contadorActualizado(contador + 1)
+      }}>
+        Incrementar contador
+      </button>
     </div>
   );
 }
