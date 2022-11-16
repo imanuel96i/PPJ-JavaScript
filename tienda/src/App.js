@@ -28,21 +28,24 @@ const App = () => {
     }
   ]
 
+  const Note = ({ note }) => {
+    return (
+      <div key={note.id}>
+            <p>{note.content}</p>
+            <small>
+              <time>{note.date}</time>
+            </small>
+      </div>
+    )
+  }
+
   return (
     <div className="App">
       <Mensaje color='red' message='Estamos trabajando' />
       <Mensaje color='green' message='En un curso' />
       <Mensaje color='yellow' message='De React' />
       <Descripcion />
-      { notes.map(note => (
-          <div key={note.id}>
-            <p>{note.content}</p>
-            <small>
-              <time>{note.date}</time>
-            </small>
-          </div>
-        ))
-      }
+      { notes.map(note => <Note note={note}/>)}
     </div>
   );
 }
