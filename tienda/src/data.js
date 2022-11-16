@@ -53,15 +53,15 @@ export const products = [
     },
     {
         id: 4,
-        title: "Teclado Razer con reposa muñeca",
-        price: "$110.990 CLP",
-        img: 'teclado_razer_3.png'
+        title: "Teclado Razer Original",
+        price: "$89.990 CLP",
+        img: "teclado_razer.png"
     },
     {
         id: 5,
-        title: "Teclado Razer con reposa muñeca",
-        price: "$110.990 CLP",
-        img: 'teclado_razer_3.png'
+        title: "Teclado Razer Original Blanco",
+        price: "$89.990 CLP",
+        img: 'teclado_razer_2.png'
     },
     {
         id: 6,
@@ -71,14 +71,14 @@ export const products = [
     },
     {
         id: 7,
-        title: "Teclado Razer con reposa muñeca",
-        price: "$110.990 CLP",
-        img: 'teclado_razer_3.png'
+        title: "Teclado Razer Original",
+        price: "$89.990 CLP",
+        img: "teclado_razer.png"
     },
     {
         id: 8,
-        title: "Teclado Razer con reposa muñeca",
-        price: "$110.990 CLP",
-        img: 'teclado_razer_3.png'
+        title: "Teclado Razer Original Blanco",
+        price: "$89.990 CLP",
+        img: 'teclado_razer_2.png'
     }
 ]
