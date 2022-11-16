@@ -1,42 +1,32 @@
 import './App.css';
 import Mensaje from './Mensaje'
+import { Note } from './Note'
+import { useState } from 'react';
 
 const Descripcion = () => {
   return <p>Se crearon componentes para react</p>
 }
 
-const App = () => {
+const App = (props) => {
+  const [notes, setNotes] = useState(props.notes)
+  const [newNote, setNewNote] = useState("")
 
-  const notes = [
-    {
-      id: 13,
-      content: "HTML is easy",
-      date: "2022-11-16T09:15:10.098Z",
-      important: true
-    },
-    {
-      id: 15,
-      content: "Browser can execute only JavaScript",
-      date: "2022-11-16T09:15:10.098Z",
-      important: false
-    },
-    {
-      id: 23,
-      content: "GET and POST are the most important method of HTTP protocol",
-      date: "2022-11-16T09:15:10.098Z",
-      important: true
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log('Crear nota')
+    const noteToAddToState = {
+      id: notes.length + 1,
+      content: newNote,
+      date: new Date().toISOString(),
+      important: Math.random() < 0.5
     }
-  ]
+    console.log(noteToAddToState)
+    setNotes(notes.concat(noteToAddToState))
+    setNewNote("")
+  }
 
-  const Note = ({ note }) => {
-    return (
-      <div key={note.id}>
-            <p>{note.content}</p>
-            <small>
-              <time>{note.date}</time>
-            </small>
-      </div>
-    )
+  const handleChange = (event) => {
+    setNewNote(event.target.value)
   }
 
   return (
@@ -45,7 +35,13 @@ const App = () => {
       <Mensaje color='green' message='En un curso' />
       <Mensaje color='yellow' message='De React' />
       <Descripcion />
-      { notes.map(note => <Note note={note}/>)}
+      {notes.map(note =>
+        <Note key={note.id} {...note} />
+      )}
+      <form onSubmit={handleSubmit}>
+        <input type="text" onChange={handleChange} value={newNote} />
+        <button>Crear nota</button>
+      </form>
     </div>
   );
 }

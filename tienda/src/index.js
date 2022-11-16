@@ -4,11 +4,31 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+const notes = [
+    {
+      id: 1,
+      content: "HTML is easy",
+      date: "2022-11-16T09:15:10.098Z",
+      important: true
+    },
+    {
+      id: 2,
+      content: "Browser can execute only JavaScript",
+      date: "2022-11-16T09:15:10.098Z",
+      important: false
+    },
+    {
+      id: 3,
+      content: "GET and POST are the most important method of HTTP protocol",
+      date: "2022-11-16T09:15:10.098Z",
+      important: true
+    }
+]
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <App notes={notes} />
   </React.StrictMode>
 );
 
