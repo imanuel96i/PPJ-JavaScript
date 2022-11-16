@@ -1,24 +1,32 @@
 import './App.css';
 import Mensaje from './Mensaje'
-import { useState } from 'react';
 
 const Descripcion = () => {
   return <p>Se crearon componentes para react</p>
 }
 
 const App = () => {
-  // ! Aumenta el contador (renderiza el app de nuevo)
-  const [contador, contadorActualizado] = useState(0)
 
-  const handleClick = () => {
-    contadorActualizado(contador + 1)
-  }
-
-  const handleClickReset = () => {
-    contadorActualizado(0)
-  }
-  //! Revisa si el contador es par o impar
-  const parImpar = contador % 2 === 0
+  const notes = [
+    {
+      id: 13,
+      content: "HTML is easy",
+      date: "2022-11-16T09:15:10.098Z",
+      important: true
+    },
+    {
+      id: 15,
+      content: "Browser can execute only JavaScript",
+      date: "2022-11-16T09:15:10.098Z",
+      important: false
+    },
+    {
+      id: 23,
+      content: "GET and POST are the most important method of HTTP protocol",
+      date: "2022-11-16T09:15:10.098Z",
+      important: true
+    }
+  ]
 
   return (
     <div className="App">
@@ -26,14 +34,15 @@ const App = () => {
       <Mensaje color='green' message='En un curso' />
       <Mensaje color='yellow' message='De React' />
       <Descripcion />
-      <strong><p>Contador: {contador}</p></strong>
-      <strong><p>{ parImpar ? 'Es par' : 'Es impar'}</p></strong>
-      <button onClick={ handleClick }>
-        Incrementar contador
-      </button>
-      <button onClick={ handleClickReset }>
-        Reiniciar contador
-      </button>
+      { notes.map(note => (
+          <div key={note.id}>
+            <p>{note.content}</p>
+            <small>
+              <time>{note.date}</time>
+            </small>
+          </div>
+        ))
+      }
     </div>
   );
 }
