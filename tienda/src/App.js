@@ -1,9 +1,9 @@
 import './App.css';
 import Home from './pages/Home';
 
-const App = (props) => {
+const App = () => {
   return (
-    <Home notes={ props.notes} />
+    <Home />
   );
 }
 
