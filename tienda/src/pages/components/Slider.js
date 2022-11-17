@@ -100,7 +100,7 @@ const Slider = () => {
                         </ImgContainer>
                         <InfContainer>
                             <Title>{product.title}</Title>
-                            <Desc>{product.price}</Desc>
+                            <Desc>{`$${product.price} CLP`}</Desc>
                             <Button>Añadir a la canasta</Button>
                         </InfContainer>
                     </Slide>

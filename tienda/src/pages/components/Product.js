@@ -82,13 +82,17 @@ const Price = styled.h2`
     justify-content: center;
 `
 
+const handleClick = () => {
+    console.log("HOLA BOTON PRUEBA")
+}
+
 const Product = ({ item }) => {
     return (
         <Container>
             <Image src={Images(`./${item.img}`)} />
             <Info>
                 <Icon>
-                    <ShoppingCartOutlined/>
+                    <button onClick={handleClick} style={{ backgroundColor: "rgba(0,0,0,0)", border: "none", cursor: "pointer"}}><ShoppingCartOutlined /></button>
                 </Icon>
                 <Icon>
                     <SearchOutlined/>
@@ -98,7 +102,7 @@ const Product = ({ item }) => {
                 </Icon>
             </Info>
             <Title>{item.title}</Title>
-            <Price>{item.price}</Price>
+            <Price>{`$${item.price} CLP`}</Price>
         </Container>
     )
 }
