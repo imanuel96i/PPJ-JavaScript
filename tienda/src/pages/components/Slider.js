@@ -10,7 +10,7 @@ const Container = styled.div`
     display: flex;
     position: relative;
     overflow: hidden;
-    background-color: #ECEFFF;
+    background-color: rgba(217, 223, 255, 0.6);
 `
 
 const Arrow = styled.div`
@@ -28,7 +28,7 @@ const Arrow = styled.div`
     right: ${props => props.direction === "right" && "10px"};
     margin: auto;
     cursor: pointer;
-    opacity: 0.5;
+    opacity: 0.7;
     z-index: 2;
 `
 

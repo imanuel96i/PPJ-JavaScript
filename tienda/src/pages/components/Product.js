@@ -35,13 +35,6 @@ const Container = styled.div`
     }
 `
 
-const Circle = styled.div`
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background-color: white;
-    position: absolute;
-`
 const Image = styled.img`
     height: calc(100% - 280px);
     z-index: 2;
@@ -59,6 +52,7 @@ const Icon = styled.div`
     margin: 10px;
     transition: all 0.5s ease;
     z-index: 4;
+    cursor: pointer;
     &:hover{
         background-color: #e9f5f5;
         transform: scale(1.1)
@@ -91,7 +85,6 @@ const Price = styled.h2`
 const Product = ({ item }) => {
     return (
         <Container>
-            <Circle />
             <Image src={Images(`./${item.img}`)} />
             <Info>
                 <Icon>

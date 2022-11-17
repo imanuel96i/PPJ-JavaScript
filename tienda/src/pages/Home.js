@@ -5,6 +5,7 @@ import NavBar from './components/NavBar'
 import Slider from './components/Slider'
 import Products from './components/Products'
 import styled from 'styled-components'
+import Footer from './components/Footer'
 
 const TitleProduc = styled.h1`
     display:flex;
@@ -19,7 +20,8 @@ const Home = () => {
             <Slider />
             <Categories />
             <TitleProduc>Productos</TitleProduc>
-            <Products/>
+            <Products />
+            <Footer />
         </div>
     )
 }
