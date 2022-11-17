@@ -4,6 +4,13 @@ import styled from 'styled-components'
 import {productsSlider as productList} from '../../data'
 const sliderImages = require.context('../assets/img', true);
 
+/*
+ * @author Manuel Vidal García
+ * Contacto: mvidal@acl.cl
+ * Fecha creación: 16/11/2022
+ * Fecha ultima modificación: 17/11/2022
+*/
+
 const Container = styled.div`
     width: 100%;
     height: 80vh;

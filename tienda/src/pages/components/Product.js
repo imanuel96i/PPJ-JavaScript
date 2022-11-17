@@ -3,6 +3,13 @@ import React from 'react'
 import styled from 'styled-components'
 const Images = require.context('../assets/img', true);
 
+/*
+ * @author Manuel Vidal García
+ * Contacto: mvidal@acl.cl
+ * Fecha creación: 16/11/2022
+ * Fecha ultima modificación: 17/11/2022
+*/
+
 const Info = styled.div`
     opacity: 0;
     width: 100%;

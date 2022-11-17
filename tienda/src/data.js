@@ -1,3 +1,9 @@
+/*
+ * @author Manuel Vidal García
+ * Contacto: mvidal@acl.cl
+ * Fecha creación: 16/11/2022
+ * Fecha ultima modificación: 17/11/2022
+*/
 export const productsSlider = [
     {
         id: 1,
@@ -13,9 +19,9 @@ export const productsSlider = [
     },
     {
         id: 3,
-        title: "Teclado Razer con reposa muñeca",
-        price: 110990,
-        img: 'teclado_razer_3.png'
+        title: "Procesador Intel Core i9-12900K",
+        price: 639990,
+        img: 'procesador_intel.png'
     }
 ]
 
@@ -53,9 +59,9 @@ export const products = [
     },
     {
         id: 4,
-        title: "Teclado Razer Original",
-        price: 89990,
-        img: "teclado_razer.png"
+        title: "Procesador Intel Core i9-12900K",
+        price: 639990,
+        img: 'procesador_intel.png'
     },
     {
         id: 5,
@@ -77,8 +83,8 @@ export const products = [
     },
     {
         id: 8,
-        title: "Teclado Razer Original Blanco",
-        price: 89990,
-        img: 'teclado_razer_2.png'
+        title: "Procesador Intel Core i9-12900K",
+        price: 639990,
+        img: 'procesador_intel.png'
     }
 ]

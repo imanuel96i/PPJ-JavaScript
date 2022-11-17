@@ -4,6 +4,13 @@ import React from 'react'
 import styled from 'styled-components'
 import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
 
+/*
+ * @author Manuel Vidal García
+ * Contacto: mvidal@acl.cl
+ * Fecha creación: 16/11/2022
+ * Fecha ultima modificación: 16/11/2022
+*/
+
 const Container = styled.div`
     height: 60px;
 `
