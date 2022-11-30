@@ -1,6 +1,8 @@
 import { FavoriteBorderOutlined, SearchOutlined, ShoppingCartOutlined } from '@mui/icons-material';
-import React from 'react'
+import { Button } from '@mui/material';
+import React, { useState } from 'react'
 import styled from 'styled-components'
+import { shoppingCart } from '../../data';
 const Images = require.context('../assets/img', true);
 
 /*
@@ -89,17 +91,31 @@ const Price = styled.h2`
     justify-content: center;
 `
 
-const handleClick = () => {
-    console.log("HOLA BOTON PRUEBA")
-}
-
 const Product = ({ item }) => {
+    const [Shcart, setShcart] = useState([])
+
+    const HandleClick = (props) => {
+        const newCartPro = {
+            id: Math.floor(Math.random() * 1000),
+            title: props.title,
+            price: props.price,
+            img: props.img
+        }
+        setShcart([...Shcart, newCartPro])
+        shoppingCart.splice(0, shoppingCart.length, ...Shcart)
+        console.log(shoppingCart)
+    }
+
     return (
         <Container>
             <Image src={Images(`./${item.img}`)} />
             <Info>
                 <Icon>
-                    <button onClick={handleClick} style={{ backgroundColor: "rgba(0,0,0,0)", border: "none", cursor: "pointer"}}><ShoppingCartOutlined /></button>
+                    <Button onClick={() => {
+                        HandleClick(item)
+                    }}>
+                        <ShoppingCartOutlined style={{color: "black",}}/>
+                    </Button>
                 </Icon>
                 <Icon>
                     <SearchOutlined/>

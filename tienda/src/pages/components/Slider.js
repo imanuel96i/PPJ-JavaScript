@@ -1,8 +1,9 @@
 import { ArrowLeftOutlined, ArrowRightOutlined } from '@mui/icons-material'
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import {productsSlider as productList} from '../../data'
+import data from '../data.json'
 const sliderImages = require.context('../assets/img', true);
+
 
 /*
  * @author Manuel Vidal García
@@ -88,9 +89,9 @@ const Slider = () => {
     
     const handleClick = (direction) => {
         if (direction === "left") {
-            setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2);
+            setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 3);
         } else {
-            setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
+            setSlideIndex(slideIndex < 3 ? slideIndex + 1 : 0);
         }
     }
 
@@ -100,7 +101,7 @@ const Slider = () => {
                 <ArrowLeftOutlined/>
             </Arrow>
             <Wrapper slideIndex={slideIndex}>
-                {productList.map(product => (
+                {data.productsSlider.map(product => (
                     <Slide key={product.id}>
                         <ImgContainer>
                             <Image src={sliderImages(`./${product.img}`)} />

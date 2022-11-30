@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { products } from '../../data'
 import Product from './Product'
+import http from './http/http'
 
 /*
  * @author Manuel Vidal García
@@ -17,13 +17,24 @@ const Container = styled.div`
     justify-content: space-between;
 `
 
+
+
 const Products = () => {
+    const [product, setProduct] = useState([])
+    useEffect(() => {
+        const GetProducts = async () => {
+            const response = await http.get('/products')
+            setProduct(response.data)
+        }
+
+        GetProducts();
+    }, [])
     return (
         <Container>
             {
-                products.map(item => (
+                product.map(item => (
                     <Product item={item} key={item.id}/>
-                ))
+                )) 
             }
         </Container>
     )

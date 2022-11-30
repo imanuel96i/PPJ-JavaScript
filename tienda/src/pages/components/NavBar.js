@@ -1,8 +1,12 @@
-import { Search } from '@mui/icons-material'
-import { Badge } from '@mui/material'
-import React from 'react'
+import { Handyman, Search } from '@mui/icons-material'
+import { Badge, Box, Button, Drawer } from '@mui/material'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
+// import fs from 'fs'
+import data from '../data.json'
+const imagesCart = require.context('../assets/img', true);
+
 
 /*
  * @author Manuel Vidal García
@@ -59,23 +63,73 @@ const MenuItem = styled.div`
 `
 
 const NavBar = () => {
+    const [state, setState] = useState({
+        right: false,
+    });
+
+    const toggleDrawer = (anchor, open) => (event) => {
+        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+            return;
+        }
+
+        setState({ ...state, [anchor]: open });
+    };
+    
+    const checkCart = data.shoppingCart.length > 0 ? true : false;
+
+    const list = (anchor) => (
+        <Box
+            sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 450 }}
+            role="presentation"
+            onClick={toggleDrawer(anchor, false)}
+            onKeyDown={toggleDrawer(anchor, false)}
+            >
+                {
+                checkCart ?
+                    data.shoppingCart.map((cart) => (
+                        <div key={cart.id}>
+                            <h1>{cart.title}</h1>
+                            <h1>${cart.price} CLP</h1>
+                            <img  alt="" src={imagesCart(`./${cart.img}`)} style={{autoSize: "auto"}}></img>
+                        </div>
+                    ))
+                    :
+                    <div>
+                        <Handyman/><Handyman/><Handyman/><Handyman/>
+                        <h2>No hay productos que mostrar</h2>
+                    </div>
+                }
+        </Box>
+    );
+
+
     return (
         <Container>
             <Wrapper>
                 <Left><Logo>Tienda Tecnología</Logo></Left>
                 <Center>
+                    <Handyman />
                     <SearchContainer>
                         <Input/>
                         <Search style={{color:"gray", fontSize:16,}} />
                     </SearchContainer>
                 </Center>
                 <Right>
-                    <MenuItem>Registro</MenuItem>
-                    <MenuItem>Inicio Sesión</MenuItem>
+                    <MenuItem><Handyman />Registro</MenuItem>
+                    <MenuItem><Handyman />Inicio Sesión</MenuItem>
                     <MenuItem>
-                        <Badge badgeContent={4} color="primary">
-                            <ShoppingCartRoundedIcon/>
-                        </Badge>
+                        <Button onClick={toggleDrawer("right", true)}>
+                            <Badge badgeContent={4} color="primary">
+                                <ShoppingCartRoundedIcon/>
+                            </Badge>
+                        </Button>
+                        <Drawer
+                            anchor="right"
+                            open={state["right"]}
+                            onClose={toggleDrawer("right", false)}
+                        >
+                            {list("right")}
+                        </Drawer>
                     </MenuItem>
                 </Right>
             </Wrapper>

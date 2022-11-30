@@ -1,5 +1,5 @@
 import React from 'react'
-import { categories } from '../../data'
+import data from '../data.json'
 import styled from 'styled-components'
 import CategoryItem from './CategoryItem'
 
@@ -20,7 +20,7 @@ const Categories = () => {
     return (
         <Container>
             {
-                categories.map(item => (
+                data.categories.map(item => (
                     <CategoryItem item={item} key={ item.id} />
                 ))
             }

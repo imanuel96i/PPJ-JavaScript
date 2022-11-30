@@ -13,12 +13,18 @@ export const productsSlider = [
     },
     {
         id: 2,
-        title: "Teclado Razer Original Blanco",
-        price: 89990,
-        img: 'teclado_razer_2.png'
+        title: "Teclado Razer con reposa muñeca",
+        price: 110990,
+        img: 'teclado_razer_3.png'
     },
     {
         id: 3,
+        title: "Procesador Intel Core i9-12900K",
+        price: 639990,
+        img: 'procesador_intel.png'
+    },
+    {
+        id: 4,
         title: "Procesador Intel Core i9-12900K",
         price: 639990,
         img: 'procesador_intel.png'
@@ -87,4 +93,13 @@ export const products = [
         price: 639990,
         img: 'procesador_intel.png'
     }
+]
+
+export const shoppingCart = [
+    // {
+    //     id: 1,
+    //     title: "Procesador Intel Core i9-12900K",
+    //     price: 639990,
+    //     img: 'procesador_intel.png'
+    // }
 ]

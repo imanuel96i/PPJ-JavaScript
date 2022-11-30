@@ -21,13 +21,19 @@ const TitleProduc = styled.h1`
 
 const Home = () => {
     return (
-        <div>
+        <div style={{
+            display: "flex",
+            flexDirection: "column",
+            height: "100vh"
+        }}>
             <Announcement/>
             <NavBar />
-            <Slider />
-            <Categories />
-            <TitleProduc>Productos</TitleProduc>
-            <Products />
+            <div style={{flexGrow: 1}}>
+                <Slider />
+                <Categories />
+                <TitleProduc>Productos</TitleProduc>
+                <Products />
+            </div>
             <Footer />
         </div>
     )

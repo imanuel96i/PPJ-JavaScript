@@ -1,3 +1,4 @@
+import { Handyman } from '@mui/icons-material';
 import React from 'react'
 import styled from 'styled-components'
 const Images = require.context('../assets/img', true);
@@ -63,6 +64,7 @@ const CategoryItem = ({item}) => {
         <Container>
             <Image src={Images(`./${item.img}`)} />
             <Info>
+                <Handyman style={{color: "white"}} />
                 <Title>{item.title}</Title>
                 <Button>Revisa aquí</Button>
             </Info>
