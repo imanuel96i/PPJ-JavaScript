@@ -1,7 +1,7 @@
 import { ArrowLeftOutlined, ArrowRightOutlined } from '@mui/icons-material'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import data from '../data.json'
+import http from './http/http'
 const sliderImages = require.context('../assets/img', true);
 
 
@@ -9,7 +9,7 @@ const sliderImages = require.context('../assets/img', true);
  * @author Manuel Vidal García
  * Contacto: mvidal@acl.cl
  * Fecha creación: 16/11/2022
- * Fecha ultima modificación: 17/11/2022
+ * Fecha ultima modificación: 01/12/2022
 */
 
 const Container = styled.div`
@@ -87,30 +87,57 @@ const Button = styled.button`
 const Slider = () => {
     const [slideIndex, setSlideIndex] = useState(0);
     
+    const [slider, setSlider] = useState([])
+    useEffect(() => {
+        const GetSlider = async () => {
+            await http.get('/slider')
+                .then(res => setSlider(res.data))
+                .catch(err => setSlider([
+                    {
+                        id: "error",
+                        title: "Ocurrio un error :(",
+                        img: "error.jpg"
+                    }]))
+        }
+
+        GetSlider();
+    }, [])
+
     const handleClick = (direction) => {
+        const can = slider.length - 1
         if (direction === "left") {
-            setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 3);
+            setSlideIndex(slideIndex > 0 ? slideIndex - 1 : can);
         } else {
-            setSlideIndex(slideIndex < 3 ? slideIndex + 1 : 0);
+            setSlideIndex(slideIndex < can ? slideIndex + 1 : 0);
         }
     }
-
+    
     return (
         <Container>
             <Arrow direction="left" onClick={() => handleClick("left")}>
                 <ArrowLeftOutlined/>
             </Arrow>
             <Wrapper slideIndex={slideIndex}>
-                {data.productsSlider.map(product => (
+                {slider.map(product => (
                     <Slide key={product.id}>
-                        <ImgContainer>
-                            <Image src={sliderImages(`./${product.img}`)} />
-                        </ImgContainer>
-                        <InfContainer>
-                            <Title>{product.title}</Title>
-                            <Desc>{`$${product.price} CLP`}</Desc>
-                            <Button>Añadir a la canasta</Button>
-                        </InfContainer>
+                        {product.id === "error" ? <>
+                            <ImgContainer>
+                                <Image src={sliderImages(`./${product.img}`)} />
+                            </ImgContainer>
+                            <InfContainer>
+                                <Title>{product.title}</Title>
+                            </InfContainer>
+                        </> : <>
+                            <ImgContainer>
+                                <Image src={sliderImages(`./${product.img}`)} />
+                            </ImgContainer>
+                            <InfContainer>
+                                <Title>{product.title}</Title>
+                                <Desc>{`$${product.price} CLP`}</Desc>
+                                <Button>Añadir a la canasta</Button>
+                            </InfContainer>
+                        </>}
+                        
                     </Slide>
                 ))}
             </Wrapper>

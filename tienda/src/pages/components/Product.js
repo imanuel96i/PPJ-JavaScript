@@ -110,22 +110,24 @@ const Product = ({ item }) => {
         <Container>
             <Image src={Images(`./${item.img}`)} />
             <Info>
-                <Icon>
-                    <Button onClick={() => {
-                        HandleClick(item)
-                    }}>
-                        <ShoppingCartOutlined style={{color: "black",}}/>
-                    </Button>
-                </Icon>
-                <Icon>
-                    <SearchOutlined/>
-                </Icon>
-                <Icon>
-                    <FavoriteBorderOutlined/>
-                </Icon>
+                {item.id === "error" ? "" :<>
+                    <Icon>
+                        <Button onClick={() => {
+                            HandleClick(item)
+                        }}>
+                            <ShoppingCartOutlined style={{color: "black",}}/>
+                        </Button>
+                    </Icon>
+                    <Icon>
+                        <SearchOutlined/>
+                    </Icon>
+                    <Icon>
+                        <FavoriteBorderOutlined/>
+                    </Icon>
+                </>}
             </Info>
             <Title>{item.title}</Title>
-            <Price>{`$${item.price} CLP`}</Price>
+            {item.id === "error" ? "" : <Price>{`$${item.price} CLP`}</Price>}
         </Container>
     )
 }

@@ -66,7 +66,7 @@ const CategoryItem = ({item}) => {
             <Info>
                 <Handyman style={{color: "white"}} />
                 <Title>{item.title}</Title>
-                <Button>Revisa aquí</Button>
+                {item.id === "error" ? "" : <Button>Revisa aquí</Button>}
             </Info>
             
         </Container>

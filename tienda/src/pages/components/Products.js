@@ -7,7 +7,7 @@ import http from './http/http'
  * @author Manuel Vidal García
  * Contacto: mvidal@acl.cl
  * Fecha creación: 16/11/2022
- * Fecha ultima modificación: 16/11/2022
+ * Fecha ultima modificación: 30/11/2022
 */
 
 const Container = styled.div`
@@ -23,8 +23,14 @@ const Products = () => {
     const [product, setProduct] = useState([])
     useEffect(() => {
         const GetProducts = async () => {
-            const response = await http.get('/products')
-            setProduct(response.data)
+            await http.get('/products')
+                .then(res => setProduct(res.data))
+                .catch(err => setProduct([
+                    {
+                        id: "error",
+                        title: "Ocurrio un error :(",
+                        img: "error.jpg"
+                    }]))
         }
 
         GetProducts();
